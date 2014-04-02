@@ -1,0 +1,20 @@
+name: VaultRank
+version: 0.0.1
+main: me.sgray.plugin.vaultrank.VaultRank
+author: SGray
+website: sgray.me
+depend: [Vault]
+
+commands:
+    vaultrank:
+        description: Returns primary vault rank of player
+        aliases: [myrank, getrank]
+        usage: /<command> [player]
+
+permissions:
+    vaultrank.admin:
+        description: Allow viewing version information and reloading the plugin.
+        default: op
+    vaultrank.others:
+        description: Allow viewing the primary rank of another player
+        default: op
