@@ -3,6 +3,7 @@ package me.sgray.vaultrank;
 import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -30,7 +31,7 @@ public class VaultRank extends JavaPlugin {
                 if (args[0].equals("reload") && sender.hasPermission("vaultrank.admin")) {
                     reloadConfig();
                 } else if (sender.hasPermission("vaultrank.others") && args[0].length() < 17) {
-                    String rank = perms.getPrimaryGroup((String) null, args[0]);
+                    String rank = perms.getPrimaryGroup((String) null, playerObject(args[0]));
                     if (rank == null) {
                         sender.sendMessage(msgPrefix() + "Could not find a group!");
                     } else {
@@ -48,6 +49,11 @@ public class VaultRank extends JavaPlugin {
         } else {
             return false;
         }
+    }
+
+    @SuppressWarnings("deprecation")
+    private OfflinePlayer playerObject(String name) {
+        return getServer().getOfflinePlayer(name);
     }
 
     private boolean hookVaultPerms() {
