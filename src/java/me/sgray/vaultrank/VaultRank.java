@@ -1,4 +1,4 @@
-package me.sgray.plugin.vaultrank;
+package me.sgray.vaultrank;
 
 import net.milkbowl.vault.permission.Permission;
 
